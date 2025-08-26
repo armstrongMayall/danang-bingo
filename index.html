@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danang Bingo - The Danang Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1 class="hotel-name">The Danang Hotel</h1>
+            <p class="tagline">10 experiences. One unforgettable stay.</p>
+        </header>
+
+        <main class="main">
+            <!-- Landing Screen -->
+            <div id="landing-screen" class="screen active">
+                <div class="welcome-section">
+                    <h2>Welcome to Danang Bingo!</h2>
+                    <div class="instructions">
+                        <h3>How to Play:</h3>
+                        <ol class="instruction-list">
+                            <li>Visit each item on your personalized bingo card</li>
+                            <li>Take a selfie at each attraction/experience and post it to Instagram using the hashtag <strong>#DanangBingo</strong></li>
+                            <li>Show your completed Instagram posts to our Reception team</li>
+                            <li>The first guest to complete all 10 each day wins a <strong>complimentary dinner for two</strong> at our signature restaurant</li>
+                        </ol>
+                    </div>
+                    <button class="cta-button" onclick="startBingo()">Start Your Bingo Adventure</button>
+                </div>
+            </div>
+
+            <!-- Bingo Card Screen -->
+            <div id="bingo-screen" class="screen">
+                <div class="progress-section">
+                    <h2>Your Bingo Card</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="progress-text" id="progress-text">0 of 10 completed</p>
+                </div>
+
+                <!-- Call to Action Banner -->
+                <div class="cta-banner">
+                    <div class="cta-content">
+                        <h3 class="cta-title">Visit All 10 Attractions</h3>
+                        <p class="cta-subtitle">Win a Luxury Meal for Two</p>
+                        <p class="cta-details">Complete your bingo card and be the first guest each day to claim your prize at our signature restaurant</p>
+                    </div>
+                </div>
+
+                <!-- Guest Information Section -->
+                <div class="guest-info-section">
+                    <h3>Guest Information</h3>
+                    <div class="guest-info-form">
+                        <div class="info-field">
+                            <label for="guest-name">Name:</label>
+                            <input type="text" id="guest-name" placeholder="Enter your name" onchange="app.saveGuestInfo()">
+                        </div>
+                        <div class="info-field">
+                            <label for="room-number">Room Number:</label>
+                            <input type="text" id="room-number" placeholder="Room #" onchange="app.saveGuestInfo()">
+                        </div>
+                        <div class="info-field">
+                            <label for="instagram-username">Instagram Username:</label>
+                            <input type="text" id="instagram-username" placeholder="@username" onchange="app.saveGuestInfo()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bingo-card" id="bingo-card">
+                    <!-- Bingo items will be dynamically generated here -->
+                </div>
+
+                <div class="submit-section">
+                    <button class="submit-button" onclick="submitBingoCard()">
+                        Submit
+                    </button>
+                    <p class="submit-note">Click to send your completed bingo card to the hotel reception team</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="secondary-button" onclick="showPrizeInfo()">View Prize & How to Claim</button>
+                    <button class="secondary-button" onclick="resetCard()">Get New Card</button>
+                </div>
+            </div>
+
+            <!-- Prize Info Screen -->
+            <div id="prize-screen" class="screen">
+                <div class="prize-section">
+                    <h2>Daily Prize</h2>
+                    <div class="prize-details">
+                        <h3>🏆 Complimentary Dinner for Two</h3>
+                        <p>At our signature restaurant</p>
+                        <div class="claim-instructions">
+                            <h4>How to Claim:</h4>
+                            <ol>
+                                <li>Complete all 10 items on your bingo card</li>
+                                <li>Post selfies with hashtag <strong>#DanangBingo</strong> for each item</li>
+                                <li>Show your completed Instagram posts to our <strong>Reception team</strong></li>
+                                <li>First guest each day wins!</li>
+                            </ol>
+                        </div>
+                        <p class="admin-note" id="admin-note">Good luck and enjoy exploring Danang!</p>
+                    </div>
+                    <button class="cta-button" onclick="backToBingo()">Back to Bingo Card</button>
+                </div>
+            </div>
+
+            <!-- Admin Screen -->
+            <div id="admin-screen" class="screen">
+                <div class="admin-section">
+                    <h2>Admin Panel</h2>
+                    <div class="admin-controls">
+                        <div class="admin-group">
+                            <label for="prize-note">Daily Prize Note:</label>
+                            <textarea id="prize-note" rows="3" placeholder="Enter daily prize note..."></textarea>
+                            <button onclick="savePrizeNote()">Save Note</button>
+                        </div>
+                        
+                        <div class="admin-group">
+                            <h3>Master Experience List</h3>
+                            <div id="experience-list">
+                                <!-- Experience items will be loaded here -->
+                            </div>
+                            <div class="add-experience">
+                                <input type="text" id="new-experience" placeholder="Add new experience...">
+                                <select id="experience-category">
+                                    <option value="landmarks">Landmarks & Natural Attractions</option>
+                                    <option value="temples">Temples, Museums & History</option>
+                                    <option value="markets">Markets & Shopping</option>
+                                    <option value="food">Food & Drink Experiences</option>
+                                    <option value="cultural">Cultural & Adventure Activities</option>
+                                </select>
+                                <button onclick="addExperience()">Add Experience</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="secondary-button" onclick="backToLanding()">Back to Main</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <button class="admin-link" onclick="showAdminLogin()">Admin</button>
+        </footer>
+
+        <!-- Admin Login Modal -->
+        <div id="admin-modal" class="modal">
+            <div class="modal-content">
+                <h3>Admin Access</h3>
+                <input type="password" id="admin-passcode" placeholder="Enter passcode">
+                <div class="modal-buttons">
+                    <button onclick="checkAdminPasscode()">Login</button>
+                    <button onclick="closeAdminModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

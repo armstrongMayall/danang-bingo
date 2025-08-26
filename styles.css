@@ -1,0 +1,953 @@
+/* Danang Bingo - Luxury Design System */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+/* Design System Variables */
+:root {
+  /* Neutrals */
+  --bg-ivory: #F7F3EF;
+  --bg-cream: #FFFFFF;
+  --text-charcoal: #2F2F2F;
+  --text-muted: #8F8F8F;
+  --line-soft: #E8E2DA;
+
+  /* Accents */
+  --accent-caramel: #B88A4A;
+  --accent-gold: #C8A46E;
+
+  /* Overlays */
+  --overlay-dim: rgba(0,0,0,0.25);
+
+  /* Shadows & radii */
+  --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-hover: 0 10px 28px rgba(0,0,0,0.12);
+  --radius-lg: 16px;
+  --radius-sm: 10px;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --fast: 150ms;
+  --base: 240ms;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--text-charcoal);
+    background: var(--bg-ivory);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--text-charcoal);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 30px;
+    background: var(--bg-cream);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.hotel-name {
+    font-size: 2.75rem;
+    font-weight: 600;
+    color: var(--text-charcoal);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Main content */
+.main {
+    flex: 1;
+    position: relative;
+}
+
+.screen {
+    display: none;
+    background: var(--bg-cream);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 20px;
+    transition: all var(--base) var(--ease);
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Landing screen */
+.welcome-section h2 {
+    font-size: 2.25rem;
+    color: var(--text-charcoal);
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.instructions {
+    margin-bottom: 40px;
+}
+
+.instructions h3 {
+    font-size: 1.4rem;
+    color: var(--text-charcoal);
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.instruction-list {
+    list-style: none;
+    counter-reset: step-counter;
+}
+
+.instruction-list li {
+    counter-increment: step-counter;
+    margin-bottom: 24px;
+    padding: 24px 24px 24px 70px;
+    background: var(--bg-ivory);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--accent-caramel);
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    transition: all var(--base) var(--ease);
+}
+
+.instruction-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.instruction-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Buttons */
+.cta-button {
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    border: none;
+    padding: 20px 48px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--base) var(--ease);
+    box-shadow: var(--shadow-soft);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    width: 100%;
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+    min-height: 44px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background: color-mix(in srgb, var(--accent-caramel) 90%, black 10%);
+}
+
+.secondary-button {
+    background: transparent;
+    color: var(--accent-caramel);
+    border: 2px solid var(--accent-caramel);
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all var(--base) var(--ease);
+    margin: 10px 5px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    min-height: 44px;
+}
+
+.secondary-button:hover {
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Progress section */
+.progress-section {
+    margin-bottom: 32px;
+}
+
+.progress-section h2 {
+    font-size: 2rem;
+    color: var(--text-charcoal);
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: var(--line-soft);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-caramel) 0%, var(--accent-gold) 100%);
+    border-radius: 6px;
+    transition: width var(--base) var(--ease);
+    width: 0%;
+}
+
+.progress-text {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Call to Action Banner */
+.cta-banner {
+    background: 
+        linear-gradient(135deg, rgba(184, 138, 74, 0.4) 0%, rgba(200, 164, 110, 0.4) 100%),
+        url('./vietfood.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    margin-bottom: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--base) var(--ease);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.15) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--bg-cream);
+    margin-bottom: 10px;
+    text-shadow: 
+        0 4px 16px rgba(0,0,0,0.8), 
+        0 2px 6px rgba(0,0,0,0.9),
+        0 1px 2px rgba(0,0,0,1);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+}
+
+.cta-subtitle {
+    font-size: 1.4rem;
+    color: var(--bg-cream);
+    font-weight: 600;
+    margin-bottom: 14px;
+    text-shadow: 
+        0 3px 12px rgba(0,0,0,0.8), 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 1px 2px rgba(0,0,0,1);
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+}
+
+.cta-details {
+    font-size: 1rem;
+    color: var(--bg-cream);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 450px;
+    margin: 0 auto;
+    text-shadow: 
+        0 3px 10px rgba(0,0,0,0.8), 
+        0 1px 3px rgba(0,0,0,0.9),
+        0 1px 1px rgba(0,0,0,1);
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.cta-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Guest information section */
+.guest-info-section {
+    background: var(--bg-ivory);
+    border-radius: var(--radius-sm);
+    padding: 32px;
+    margin-bottom: 32px;
+    border: 1px solid var(--line-soft);
+    transition: all var(--base) var(--ease);
+}
+
+.guest-info-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-charcoal);
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.guest-info-form {
+    display: grid;
+    gap: 24px;
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-field label {
+    font-size: 1rem;
+    color: var(--text-charcoal);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-field input {
+    padding: 16px 20px;
+    border: 2px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    background: var(--bg-cream);
+    transition: all var(--base) var(--ease);
+    font-family: inherit;
+    color: var(--text-charcoal);
+    min-height: 44px;
+}
+
+.info-field input:focus {
+    outline: none;
+    border-color: var(--accent-caramel);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-caramel) 20%, transparent);
+}
+
+.info-field input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Bingo card */
+.bingo-card {
+    margin-bottom: 32px;
+}
+
+.bingo-item {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    margin-bottom: 16px;
+    background: var(--bg-ivory);
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    transition: all var(--base) var(--ease);
+    cursor: pointer;
+    min-height: 80px;
+}
+
+.bingo-item:hover {
+    background: var(--bg-cream);
+    border-color: var(--line-soft);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+}
+
+.bingo-item.completed {
+    background: color-mix(in srgb, var(--accent-gold) 15%, var(--bg-cream));
+    border-color: var(--accent-gold);
+}
+
+.bingo-checkbox {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--line-soft);
+    border-radius: 8px;
+    margin-right: 20px;
+    position: relative;
+    transition: all var(--base) var(--ease);
+    flex-shrink: 0;
+}
+
+.bingo-checkbox.checked {
+    background: var(--accent-caramel);
+    border-color: var(--accent-caramel);
+}
+
+.bingo-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    color: var(--bg-cream);
+    font-weight: bold;
+    font-size: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bingo-text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--text-charcoal);
+}
+
+.category-badge {
+    background: var(--line-soft);
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    margin-left: 16px;
+    font-weight: 500;
+}
+
+/* Submit section */
+.submit-section {
+    text-align: center;
+    margin: 32px 0;
+    padding: 32px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-gold) 10%, var(--bg-cream)) 0%, color-mix(in srgb, var(--accent-caramel) 8%, var(--bg-cream)) 100%);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--accent-gold);
+}
+
+.submit-button {
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    border: none;
+    padding: 20px 48px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--base) var(--ease);
+    box-shadow: var(--shadow-soft);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+    min-height: 44px;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background: color-mix(in srgb, var(--accent-caramel) 90%, black 10%);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.submit-note {
+    color: var(--accent-caramel);
+    font-size: 0.95rem;
+    margin: 0;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Action buttons */
+.action-buttons {
+    text-align: center;
+    margin-top: 32px;
+}
+
+/* Prize section */
+.prize-section h2 {
+    font-size: 2.25rem;
+    color: var(--text-charcoal);
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.prize-details h3 {
+    font-size: 1.75rem;
+    color: var(--text-charcoal);
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.prize-details > p {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    font-style: italic;
+}
+
+.claim-instructions h4 {
+    font-size: 1.3rem;
+    color: var(--text-charcoal);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.claim-instructions ol {
+    list-style: none;
+    counter-reset: claim-counter;
+}
+
+.claim-instructions li {
+    counter-increment: claim-counter;
+    margin-bottom: 16px;
+    padding: 20px 20px 20px 50px;
+    background: var(--bg-ivory);
+    border-radius: var(--radius-sm);
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.claim-instructions li::before {
+    content: counter(claim-counter);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.admin-note {
+    background: color-mix(in srgb, var(--accent-gold) 15%, var(--bg-cream));
+    border: 1px solid var(--accent-gold);
+    padding: 24px;
+    border-radius: var(--radius-sm);
+    margin-top: 32px;
+    text-align: center;
+    font-style: italic;
+    color: var(--accent-caramel);
+    font-weight: 500;
+}
+
+/* Admin section */
+.admin-section h2 {
+    font-size: 2rem;
+    color: var(--text-charcoal);
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.admin-group {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: var(--bg-ivory);
+    border-radius: var(--radius-sm);
+}
+
+.admin-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-charcoal);
+}
+
+.admin-group textarea,
+.admin-group input,
+.admin-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    background: var(--bg-cream);
+    color: var(--text-charcoal);
+    transition: all var(--base) var(--ease);
+    min-height: 44px;
+}
+
+.admin-group textarea:focus,
+.admin-group input:focus,
+.admin-group select:focus {
+    outline: none;
+    border-color: var(--accent-caramel);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-caramel) 20%, transparent);
+}
+
+.admin-group button {
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all var(--base) var(--ease);
+    min-height: 44px;
+}
+
+.admin-group button:hover {
+    background: color-mix(in srgb, var(--accent-caramel) 90%, black 10%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+}
+
+.experience-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-cream);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    border: 1px solid var(--line-soft);
+    transition: all var(--base) var(--ease);
+}
+
+.experience-item:hover {
+    box-shadow: var(--shadow-soft);
+}
+
+.experience-item button {
+    background: #d73527;
+    color: var(--bg-cream);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--fast) var(--ease);
+}
+
+.experience-item button:hover {
+    background: color-mix(in srgb, #d73527 85%, black 15%);
+}
+
+.add-experience {
+    margin-top: 20px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 24px;
+}
+
+.admin-link {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    transition: all var(--fast) var(--ease);
+}
+
+.admin-link:hover {
+    color: var(--accent-caramel);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-dim);
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--bg-cream);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--shadow-hover);
+}
+
+.modal-content h3 {
+    margin-bottom: 24px;
+    color: var(--text-charcoal);
+    text-align: center;
+    font-weight: 500;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    margin-bottom: 24px;
+    font-size: 1rem;
+    background: var(--bg-cream);
+    color: var(--text-charcoal);
+    transition: all var(--base) var(--ease);
+    min-height: 44px;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: var(--accent-caramel);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-caramel) 20%, transparent);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all var(--base) var(--ease);
+    min-height: 44px;
+}
+
+.modal-buttons button:first-child {
+    background: var(--accent-caramel);
+    color: var(--bg-cream);
+}
+
+.modal-buttons button:first-child:hover {
+    background: color-mix(in srgb, var(--accent-caramel) 90%, black 10%);
+}
+
+.modal-buttons button:last-child {
+    background: var(--line-soft);
+    color: var(--text-charcoal);
+}
+
+.modal-buttons button:last-child:hover {
+    background: color-mix(in srgb, var(--line-soft) 80%, black 20%);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    #app {
+        padding: 16px;
+    }
+    
+    .header {
+        padding: 32px 20px;
+        margin-bottom: 24px;
+    }
+    
+    .hotel-name {
+        font-size: 2.25rem;
+    }
+    
+    .cta-banner {
+        padding: 32px 20px;
+        margin-bottom: 24px;
+        min-height: 140px;
+    }
+    
+    .cta-title {
+        font-size: clamp(1.2rem, 5vw, 1.4rem);
+        margin-bottom: 8px;
+    }
+    
+    .cta-subtitle {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+        margin-bottom: 10px;
+    }
+    
+    .cta-details {
+        font-size: clamp(0.85rem, 3vw, 0.95rem);
+        line-height: 1.4;
+        max-width: 320px;
+    }
+    
+    .screen {
+        padding: 24px 20px;
+    }
+    
+    .guest-info-section {
+        padding: 24px 20px;
+    }
+    
+    .guest-info-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .info-field input {
+        padding: 16px 18px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .instruction-list li {
+        padding: 20px 20px 20px 60px;
+        font-size: 1rem;
+    }
+    
+    .instruction-list li::before {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+        left: 20px;
+        top: 20px;
+    }
+    
+    .bingo-item {
+        padding: 20px;
+        min-height: 70px;
+    }
+    
+    .bingo-text {
+        font-size: 1rem;
+    }
+    
+    .submit-section {
+        padding: 24px 20px;
+        margin: 24px 0;
+    }
+    
+    .submit-button {
+        padding: 18px 32px;
+        font-size: 1.1rem;
+        max-width: none;
+    }
+    
+    .submit-note {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 18px 32px;
+        font-size: 1rem;
+    }
+    
+    .secondary-button {
+        display: block;
+        width: 100%;
+        margin: 12px 0;
+    }
+    
+    .action-buttons {
+        margin-top: 24px;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.9rem;
+    }
+    
+    .prize-section h2 {
+        font-size: 1.9rem;
+    }
+}
+
+/* Accessibility - Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast for accessibility */
+@media (prefers-contrast: high) {
+    .bingo-item {
+        border: 2px solid var(--text-charcoal);
+    }
+    
+    .bingo-checkbox {
+        border: 2px solid var(--text-charcoal);
+    }
+    
+    .category-badge {
+        background: var(--text-charcoal);
+        color: var(--bg-cream);
+    }
+}
