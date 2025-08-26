@@ -69,25 +69,70 @@ h1, h2, h3, h4, h5, h6 {
 .header {
     text-align: center;
     margin-bottom: 40px;
-    padding: 40px 30px;
+    padding: 0;
     background: var(--bg-cream);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.hotel-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    transition: height var(--base) var(--ease);
+}
+
+/* Make hotel image more prominent on landing screen */
+#landing-screen.active ~ * .hotel-image,
+#landing-screen.screen.active + * .hotel-image {
+    height: 300px;
+}
+
+/* Alternative approach - target when landing screen is visible */
+body:has(#landing-screen.active) .hotel-image {
+    height: 300px;
+}
+
+.header-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--base) var(--ease);
+}
+
+.header-photo:hover {
+    transform: scale(1.02);
 }
 
 .hotel-name {
     font-size: 2.75rem;
     font-weight: 600;
     color: var(--text-charcoal);
-    margin-bottom: 12px;
+    margin: 24px 0 12px 0;
     letter-spacing: -0.02em;
+    padding: 0 30px;
 }
 
-.tagline {
+.hotel-tagline {
+    font-size: 1.2rem;
+    color: var(--accent-caramel);
+    font-style: italic;
+    font-weight: 500;
+    padding: 0 30px 30px 30px;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.page-tagline {
     font-size: 1.1rem;
     color: var(--text-muted);
     font-style: italic;
     font-weight: 400;
+    text-align: center;
+    margin-bottom: 24px;
 }
 
 /* Main content */
@@ -114,9 +159,44 @@ h1, h2, h3, h4, h5, h6 {
 .welcome-section h2 {
     font-size: 2.25rem;
     color: var(--text-charcoal);
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     text-align: center;
     font-weight: 500;
+}
+
+/* Hero CTA Banner */
+.hero-cta-banner {
+    background: 
+        linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.5) 100%),
+        url('./vietfood.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: -40px -30px 50px -30px;
+    padding: 60px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.hero-cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-cta-headline {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--bg-cream);
+    line-height: 1.3;
+    max-width: 500px;
+    margin: 0 auto;
+    text-shadow: 
+        0 4px 16px rgba(0,0,0,0.8), 
+        0 2px 6px rgba(0,0,0,0.9),
+        0 1px 2px rgba(0,0,0,1);
+    letter-spacing: -0.01em;
 }
 
 .instructions {
@@ -137,26 +217,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .instruction-list li {
     counter-increment: step-counter;
-    margin-bottom: 24px;
-    padding: 24px 24px 24px 70px;
-    background: var(--bg-ivory);
-    border-radius: var(--radius-sm);
-    border-left: 4px solid var(--accent-caramel);
+    margin-bottom: 0;
+    padding: 24px 24px 24px 60px;
+    background: transparent;
     position: relative;
     font-size: 1.05rem;
     line-height: 1.6;
-    transition: all var(--base) var(--ease);
+    border-bottom: 1px solid var(--line-soft);
 }
 
-.instruction-list li:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+.instruction-list li:last-child {
+    border-bottom: none;
 }
 
 .instruction-list li::before {
     content: counter(step-counter);
     position: absolute;
-    left: 24px;
+    left: 0;
     top: 24px;
     background: var(--accent-caramel);
     color: var(--bg-cream);
@@ -405,20 +482,18 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     padding: 24px;
-    margin-bottom: 16px;
-    background: var(--bg-ivory);
-    border-radius: var(--radius-sm);
-    border: 2px solid transparent;
-    transition: all var(--base) var(--ease);
+    margin-bottom: 0;
+    background: transparent;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    border-bottom: 1px solid var(--line-soft);
     cursor: pointer;
     min-height: 80px;
 }
 
-.bingo-item:hover {
-    background: var(--bg-cream);
-    border-color: var(--line-soft);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-soft);
+.bingo-item:last-child {
+    border-bottom: none;
 }
 
 .bingo-item.completed {
@@ -474,10 +549,8 @@ h1, h2, h3, h4, h5, h6 {
 .submit-section {
     text-align: center;
     margin: 32px 0;
-    padding: 32px;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-gold) 10%, var(--bg-cream)) 0%, color-mix(in srgb, var(--accent-caramel) 8%, var(--bg-cream)) 100%);
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--accent-gold);
+    padding: 0;
+    background: transparent;
 }
 
 .submit-button {
@@ -562,30 +635,34 @@ h1, h2, h3, h4, h5, h6 {
 
 .claim-instructions li {
     counter-increment: claim-counter;
-    margin-bottom: 16px;
-    padding: 20px 20px 20px 50px;
-    background: var(--bg-ivory);
-    border-radius: var(--radius-sm);
+    margin-bottom: 0;
+    padding: 24px 24px 24px 60px;
+    background: transparent;
     position: relative;
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.6;
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.claim-instructions li:last-child {
+    border-bottom: none;
 }
 
 .claim-instructions li::before {
     content: counter(claim-counter);
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 0;
+    top: 24px;
     background: var(--accent-caramel);
     color: var(--bg-cream);
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 0.85rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     font-family: 'Inter', sans-serif;
 }
 
@@ -819,12 +896,46 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .header {
-        padding: 32px 20px;
         margin-bottom: 24px;
+    }
+    
+    .hotel-image {
+        height: 150px;
+    }
+    
+    body:has(#landing-screen.active) .hotel-image {
+        height: 200px;
     }
     
     .hotel-name {
         font-size: 2.25rem;
+        margin: 20px 0 8px 0;
+        padding: 0 20px;
+    }
+    
+    .hotel-tagline {
+        font-size: 1.1rem;
+        padding: 0 20px 24px 20px;
+    }
+    
+    .page-tagline {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .hero-cta-banner {
+        margin: -24px -20px 40px -20px;
+        padding: 50px 20px;
+    }
+    
+    .hero-cta-headline {
+        font-size: 1.6rem;
+        line-height: 1.4;
     }
     
     .cta-banner {
@@ -867,15 +978,16 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .instruction-list li {
-        padding: 20px 20px 20px 60px;
+        padding: 20px 20px 20px 50px;
         font-size: 1rem;
+        margin-bottom: 0;
     }
     
     .instruction-list li::before {
         width: 24px;
         height: 24px;
         font-size: 0.8rem;
-        left: 20px;
+        left: 10px;
         top: 20px;
     }
     
@@ -889,7 +1001,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .submit-section {
-        padding: 24px 20px;
+        padding: 0;
         margin: 24px 0;
     }
     

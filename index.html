@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danang Bingo - The Danang Hotel</title>
+    <title>Danang Bingo - The Da Nang Hotel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="app">
         <header class="header">
-            <h1 class="hotel-name">The Danang Hotel</h1>
-            <p class="tagline">10 experiences. One unforgettable stay.</p>
+            <div class="hotel-image">
+                <img src="./danang-hotel.jpeg" alt="The Da Nang Hotel - Luxury beachfront resort" class="header-photo">
+            </div>
+            <h1 class="hotel-name">The Da Nang Hotel</h1>
+            <p class="hotel-tagline">Where luxury meets local charm.</p>
         </header>
 
         <main class="main">
             <!-- Landing Screen -->
             <div id="landing-screen" class="screen active">
                 <div class="welcome-section">
+                    <!-- Edge-to-edge CTA Banner -->
+                    <div class="hero-cta-banner">
+                        <div class="hero-cta-content">
+                            <h3 class="hero-cta-headline">Experience the Best of Da Nang and Win a Luxury Meal for Two.</h3>
+                        </div>
+                    </div>
+                    
                     <h2>Welcome to Danang Bingo!</h2>
+                    <p class="page-tagline">10 experiences. One unforgettable stay.</p>
+                    
                     <div class="instructions">
                         <h3>How to Play:</h3>
                         <ol class="instruction-list">
@@ -33,21 +45,20 @@
 
             <!-- Bingo Card Screen -->
             <div id="bingo-screen" class="screen">
+                <!-- Call to Action Banner -->
+                <div class="hero-cta-banner">
+                    <div class="hero-cta-content">
+                        <h3 class="hero-cta-headline">Experience the Best of Da Nang and Win a Luxury Meal for Two.</h3>
+                    </div>
+                </div>
+
                 <div class="progress-section">
                     <h2>Your Bingo Card</h2>
+                    <p class="page-tagline">10 experiences. One unforgettable stay.</p>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
                     </div>
                     <p class="progress-text" id="progress-text">0 of 10 completed</p>
-                </div>
-
-                <!-- Call to Action Banner -->
-                <div class="cta-banner">
-                    <div class="cta-content">
-                        <h3 class="cta-title">Visit All 10 Attractions</h3>
-                        <p class="cta-subtitle">Win a Luxury Meal for Two</p>
-                        <p class="cta-details">Complete your bingo card and be the first guest each day to claim your prize at our signature restaurant</p>
-                    </div>
                 </div>
 
                 <!-- Guest Information Section -->
@@ -91,7 +102,7 @@
                 <div class="prize-section">
                     <h2>Daily Prize</h2>
                     <div class="prize-details">
-                        <h3>🏆 Complimentary Dinner for Two</h3>
+                        <h3>Complimentary Dinner for Two</h3>
                         <p>At our signature restaurant</p>
                         <div class="claim-instructions">
                             <h4>How to Claim:</h4>

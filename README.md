@@ -1,6 +1,6 @@
-# Danang Bingo - The Danang Hotel
+# Danang Bingo - The Da Nang Hotel
 
-A browser-based web app for The Danang Hotel's guest engagement program.
+A browser-based web app for The Da Nang Hotel's guest engagement program.
 
 ## Overview
 Danang Bingo is an interactive experience that encourages hotel guests to explore local attractions and cultural experiences in and around Danang, Vietnam.
@@ -41,4 +41,4 @@ Danang Bingo is an interactive experience that encourages hotel guests to explor
 - `script.js` - All functionality and data management
 - `README.md` - This documentation
 
-Built with ❤️ for The Danang Hotel guests# danang-bingo
+Built with ❤️ for The Da Nang Hotel guests# danang-bingo
